@@ -2,33 +2,69 @@ import { Github, Twitter, Linkedin, Droplets, Target, Eye, Heart } from 'lucide-
 
 const team = [
   {
-    name: 'Dr. Sarah Al-Hassan',
-    role: 'Founder & Water Scientist',
+    name: 'Tareq Khalil',
+    role: 'XXX',
     bio: 'PhD in Environmental Engineering with 12 years of experience in water quality research and community-based water management solutions.',
-    avatar: 'SA',
+    avatar: 'TQ',
     color: 'from-ocean-500 to-ocean-700'
   },
   {
-    name: 'Marcus Chen',
-    role: 'Lead Developer',
+    name: 'Daniel George',
+    role: 'XXX',
     bio: 'Full-stack engineer passionate about civic tech. Built platforms for 3 NGOs focused on environmental monitoring and data transparency.',
-    avatar: 'MC',
+    avatar: 'DG',
     color: 'from-teal-500 to-teal-700'
   },
   {
-    name: 'Aisha Nakamura',
-    role: 'Community Manager',
+    name: 'Amro Ibrahim',
+    role: 'XXX',
     bio: 'Connecting citizens and governments. Background in urban planning and environmental policy advocacy across 8 countries.',
-    avatar: 'AN',
+    avatar: 'AI',
     color: 'from-ocean-600 to-teal-600'
   },
   {
-    name: 'Yusuf Okonkwo',
-    role: 'Data Analyst',
+    name: 'Mohamed El-Shamy',
+    role: 'XXX',
     bio: 'Turning water data into actionable insights. Specialist in GIS mapping and environmental impact assessment.',
-    avatar: 'YO',
+    avatar: 'ME',
     color: 'from-teal-600 to-ocean-600'
+  },
+  {
+    name: 'Tyam Mohamed',
+    role: 'XXX',
+    bio: 'Passionate about empowering communities through technology. Experienced in project management and community engagement for environmental initiatives.',
+    avatar: 'TM',
+    color: 'from-ocean-500 to-teal-500'
+  },
+  {
+    name: 'Yousef Ahmed',
+    role: 'XXX',
+    bio: 'Environmental educator and outreach coordinator. Dedicated to raising awareness about water issues through workshops and community programs.',
+    avatar: 'YA',
+    color: 'from-teal-500 to-ocean-500'
+  },
+  {
+    name: 'Kevin Martin',
+    role: 'XXX',
+    bio: 'Data scientist and environmental policy expert. Specializes in using data to inform water management decisions and policy development.',
+    avatar: 'KM',
+    color: 'from-ocean-600 to-teal-600'
+  },
+  {
+    name: 'Asser El-Sergany',
+    role: 'XXX',
+    bio: 'Software developer with a passion for environmental sustainability. Experienced in building scalable web applications for social good.',
+    avatar: 'AS',
+    color: 'from-teal-600 to-ocean-600'
+  },
+  {
+    name: 'Loay Alaa',
+    role: 'XXX',
+    bio: 'Community organizer and environmental advocate. Focused on mobilizing local communities to take action on water conservation and pollution prevention.',
+    avatar: 'LA',
+    color: 'from-ocean-500 to-teal-500'
   }
+
 ]
 
 const values = [
