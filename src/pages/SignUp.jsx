@@ -77,7 +77,7 @@ export default function SignUp() {
           <div className="w-14 h-14 rounded-2xl bg-ocean-500/20 border border-ocean-400/30 flex items-center justify-center mx-auto mb-4">
             <Droplets size={28} className="text-ocean-300" />
           </div>
-          <h1 className="font-display text-4xl font-bold text-white mb-2">Join AquaWatch</h1>
+          <h1 className="font-display text-4xl font-bold text-white mb-2">Join MOYA</h1>
           <p className="text-white/50">Create your account and start making a difference</p>
         </div>
 

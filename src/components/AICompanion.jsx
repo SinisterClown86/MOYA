@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Bot, X, Send, Minimize2, Maximize2 } from 'lucide-react'
 
-const SYSTEM_PROMPT = `You are AquaBot, a friendly AI assistant for AquaWatch — a water problem reporting and management platform. 
+const SYSTEM_PROMPT = `You are AquaBot, a friendly AI assistant for MOYA — a water problem reporting and management platform. 
 You help users with:
 - How to report water problems on the map
 - Understanding the points and rewards system
@@ -41,7 +41,7 @@ export default function AICompanion() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${apiKey}`,
           'HTTP-Referer': window.location.origin,
-          'X-Title': 'AquaWatch'
+          'X-Title': 'MOYA'
         },
         body: JSON.stringify({
           model: 'openai/gpt-4o-mini',
