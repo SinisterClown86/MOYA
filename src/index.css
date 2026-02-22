@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #082f49;
+    color: #f0f9ff;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0c4a6e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0369a1;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .btn-primary {
+    @apply bg-ocean-500 hover:bg-ocean-400 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-ocean-500/30 hover:shadow-xl active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply glass hover:bg-white/10 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 active:scale-95;
+  }
+
+  .btn-teal {
+    @apply bg-teal-500 hover:bg-teal-400 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-teal-500/30 hover:shadow-xl active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full glass rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-ocean-400/50 transition-all duration-300;
+  }
+
+  .card {
+    @apply glass rounded-2xl p-6 transition-all duration-300 hover:bg-white/10;
+  }
+
+  .nav-link {
+    @apply text-white/70 hover:text-white transition-colors duration-200 font-medium text-sm;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-pending {
+    @apply badge bg-yellow-500/20 text-yellow-300 border border-yellow-500/30;
+  }
+
+  .badge-approved {
+    @apply badge bg-teal-500/20 text-teal-300 border border-teal-500/30;
+  }
+
+  .badge-rejected {
+    @apply badge bg-coral-500/20 text-coral-400 border border-red-500/30;
+  }
+}
+
+/* Leaflet map styles override */
+.leaflet-container {
+  background: #0c4a6e !important;
+  border-radius: 16px;
+}
+
+.leaflet-tile {
+  filter: hue-rotate(180deg) saturate(0.8) brightness(0.7) invert(0);
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0c4a6e !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 16px !important;
+  color: white !important;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important;
+  backdrop-filter: blur(20px);
+}
+
+.leaflet-popup-tip {
+  background: #0c4a6e !important;
+}
+
+.leaflet-popup-close-button {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wave animation */
+.wave-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0 30 C200 0 400 60 600 30 C800 0 1000 60 1200 30 L1200 60 L0 60 Z' fill='%230c4a6e'/%3E%3C/svg%3E") repeat-x;
+  background-size: 1200px 60px;
+  animation: wave 8s linear infinite;
+}
+
+/* AI Chat bubble */
+.chat-bubble {
+  position: relative;
+}
+
+.chat-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(255,255,255,0.12);
+}
+
+.chat-bubble-ai::before {
+  left: 20px;
+}
+
+.chat-bubble-user::before {
+  left: auto;
+  right: 20px;
+  border-top-color: rgba(14, 165, 233, 0.4);
+}
+
+/* Shimmer loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Score card animation */
+@keyframes scoreCount {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-animate {
+  animation: scoreCount 0.5s ease-out forwards;
+}
