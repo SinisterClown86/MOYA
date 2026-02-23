@@ -67,10 +67,10 @@ const team = [
 ]
 
 const supervisor = {
-  name: 'Dr. Supervisor Name',
+  name: 'Dr. Mohamed Gamal',
   role: 'Project Supervisor',
   bio: 'Senior environmental strategist guiding the MOYA initiative and mentoring the team throughout research, validation, and deployment phases.',
-  avatar: 'DS',
+  avatar: 'MG',
   color: 'from-purple-500 to-indigo-600'
 }
 
