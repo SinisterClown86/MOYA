@@ -106,10 +106,10 @@ export default function Home() {
       <section className="py-20 bg-ocean-900/50">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCard number="0K+" label="Reports Submitted" icon={AlertTriangle} />
-            <StatCard number="0+" label="Active Users" icon={Star} />
-            <StatCard number="0%" label="Issues Resolved" icon={TrendingUp} />
-            <StatCard number="0+" label="Cities Covered" icon={Map} />
+            <StatCard number="1+" label="Reports Submitted" icon={AlertTriangle} />
+            <StatCard number="3+" label="Active Users" icon={Star} />
+            <StatCard number="1%" label="Issues Resolved" icon={TrendingUp} />
+            <StatCard number="10+" label="Cities Covered" icon={Map} />
           </div>
         </div>
       </section>
