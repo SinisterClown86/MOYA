@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { supabase } from '../lib/supabase'
 import { GAME_REGISTRY, FREE_GAME_IDS, ENGINE_LABELS } from './gameRegistry'
+// import IframeGame from './games/IframeGame'
 import {
   Gamepad2, Star, Lock, Play, Trophy,
   ChevronRight, ArrowLeft, TrendingUp, Award,
@@ -330,8 +331,7 @@ export default function GameHub() {
             </span>
           </h1>
           <p className="text-white/55 text-lg max-w-2xl mx-auto leading-relaxed">
-            Water-themed games designed to educate and entertain — built in React,
-            and growing with engine-powered adventures as we expand.
+            Earn AquaPoints from reporting, then spend them to unlock harder challenges.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 mt-7">
             {[
@@ -469,21 +469,6 @@ export default function GameHub() {
                   </div>
                 )
               })}
-            </div>
-
-            <div className="glass rounded-2xl p-5 border border-purple-500/15">
-              <h3 className="font-display text-base font-bold text-white mb-2 flex items-center gap-2">
-                <Gamepad2 size={15} className="text-purple-300" />Adding Engine Games
-              </h3>
-              <p className="text-white/40 text-xs leading-relaxed mb-3">
-                Export your Unity / Godot game to web, drop files into{' '}
-                <code className="text-ocean-300 bg-ocean-500/15 px-1 rounded">public/games/your-id/</code>,
-                then add one entry to <code className="text-ocean-300 bg-ocean-500/15 px-1 rounded">gameRegistry.js</code>.
-              </p>
-              <a href="/docs/GAME_BRIDGE.md" target="_blank" rel="noreferrer"
-                className="flex items-center gap-1.5 text-purple-300 text-xs hover:text-purple-200 transition-colors">
-                <ExternalLink size={11} />Read the integration guide
-              </a>
             </div>
 
             <div className="glass rounded-2xl p-5">
