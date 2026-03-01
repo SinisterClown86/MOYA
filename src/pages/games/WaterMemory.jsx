@@ -229,7 +229,7 @@ export default function WaterMemory({ onExit, onScoreEarned, userPoints, onSpend
             </div>
             <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-500/15 border border-teal-500/30">
               <Zap size={14} className="text-teal-300" />
-              <span className="text-teal-200 text-sm">+{Math.floor(score/5)} AquaPoints earned!</span>
+              <span className="text-teal-200 text-sm">🏆 Score: {Math.floor(score/5)}</span>
             </div>
             <div className="flex gap-3">
               <button onClick={() => startGame(activeSet)} className="btn-teal flex items-center gap-2">

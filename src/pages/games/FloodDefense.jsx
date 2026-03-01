@@ -271,7 +271,7 @@ export default function FloodDefense({ onExit, onScoreEarned }) {
               {gameState === 'won' && (
                 <div className="glass rounded-xl px-4 py-2 text-center">
                   <div className="text-teal-300 font-bold text-xl">+{finalPts}</div>
-                  <div className="text-white/40 text-xs">AquaPoints</div>
+                  <div className="text-white/40 text-xs">Game Score</div>
                 </div>
               )}
             </div>

@@ -128,7 +128,7 @@ export default function Home() {
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl font-bold text-white mb-4">How MOYA Works</h2>
+            <h2 className="font-display text-4xl font-bold text-white mb-4">How AquaWatch Works</h2>
             <p className="text-white/55 text-lg max-w-xl mx-auto">A complete ecosystem for water problem reporting, education, and community engagement</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -220,7 +220,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
-                MOYA isn't just about reporting — it's about understanding water.
+                AquaWatch isn't just about reporting — it's about understanding water.
                 Our Game Hub features six hand-crafted educational games covering water
                 science, infrastructure, purification, and real-world crisis management.
               </p>
@@ -228,10 +228,10 @@ export default function Home() {
               {/* Game list preview */}
               <div className="flex flex-col gap-3 mb-8">
                 {[
-                  {name: 'Water Trivia',    label: 'Free',     desc: 'Timed quiz on water science & global issues' },
-                  {name: 'Pipeline Puzzle', label: '10 pts',   desc: 'Rotate pipes to route water infrastructure' },
-                  {name: 'Flood Defense',   label: '20 pts',  desc: 'Real-time strategy: protect homes from floods' },
-                  {name: 'Eco Decisions',   label: '20 pts',  desc: 'Make real-world water management choices' },
+                  { emoji: '🧠', name: 'Water Trivia',    label: 'Free',     desc: 'Timed quiz on water science & global issues' },
+                  { emoji: '🔧', name: 'Pipeline Puzzle', label: '50 pts',   desc: 'Rotate pipes to route water infrastructure' },
+                  { emoji: '🌊', name: 'Flood Defense',   label: '120 pts',  desc: 'Real-time strategy: protect homes from floods' },
+                  { emoji: '🌍', name: 'Eco Decisions',   label: '100 pts',  desc: 'Make real-world water management choices' },
                 ].map(({ emoji, name, label, desc }) => (
                   <div key={name} className="flex items-center gap-3 glass rounded-xl px-4 py-3 group hover:bg-white/10 transition-colors">
                     <span className="text-xl flex-shrink-0">{emoji}</span>
@@ -258,7 +258,7 @@ export default function Home() {
                 </Link>
                 <Link to="/map" className="btn-secondary flex items-center gap-2 px-7 py-3">
                   <Star size={17} />
-                  Earn Points First
+                  Earn Points via Map
                 </Link>
               </div>
             </div>
@@ -343,7 +343,7 @@ export default function Home() {
               <h2 className="font-display text-4xl font-bold text-white mb-4">Ready to Make a Difference?</h2>
               <p className="text-white/60 mb-8 text-lg">Join thousands of citizens helping to improve water management in their communities.</p>
               <Link to={user ? "/map" : "/signup"} className="btn-teal inline-flex items-center gap-2 text-base px-10 py-4">
-                {user ? 'Open the Map' : 'Join MOYA'}
+                {user ? 'Open the Map' : 'Join AquaWatch'}
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -356,9 +356,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Droplets size={18} className="text-ocean-300" />
-            <span className="font-display font-bold text-white">MOYA</span>
+            <span className="font-display font-bold text-white">AquaWatch</span>
           </div>
-          <p className="text-white/30 text-sm">© 2026 WaterWorks. Helping communities, one drop at a time.</p>
+          <p className="text-white/30 text-sm">© 2024 AquaWatch. Helping communities, one drop at a time.</p>
           <div className="flex gap-6">
             <Link to="/meet-us" className="text-white/40 hover:text-white/70 text-sm transition-colors">About</Link>
             <Link to="/map" className="text-white/40 hover:text-white/70 text-sm transition-colors">Map</Link>

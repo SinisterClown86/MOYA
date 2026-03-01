@@ -193,9 +193,9 @@ export default function PipelinePuzzle({ onExit, onScoreEarned }) {
           <div className="font-display text-3xl font-bold text-yellow-300">{totalScore}</div>
           <div className="text-white/40 text-sm">Total Score</div>
         </div>
-        <div className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-500/15 border border-teal-500/30">
-          <Zap size={16} className="text-teal-300" />
-          <span className="text-teal-200 font-medium">+{Math.floor(totalScore/10)} AquaPoints earned!</span>
+        <div className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-yellow-500/10 border border-yellow-500/25">
+          <Trophy size={16} className="text-yellow-300" />
+          <span className="text-yellow-200 font-medium">🏆 Final Score: {Math.floor(totalScore/10)}</span>
         </div>
         <div className="flex gap-3">
           <button onClick={() => { setLevelIdx(0); setTotalScore(0); setAllDone(false) }} className="btn-teal flex items-center gap-2">

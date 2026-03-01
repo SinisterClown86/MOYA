@@ -121,9 +121,9 @@ export default function WaterTrivia({ onExit, onScoreEarned }) {
           ))}
         </div>
         {pointsToAward > 0 && (
-          <div className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-500/15 border border-teal-500/30">
-            <Zap size={16} className="text-teal-300" />
-            <span className="text-teal-200 font-medium">+{pointsToAward} AquaPoints earned!</span>
+          <div className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-yellow-500/10 border border-yellow-500/25">
+            <Trophy size={16} className="text-yellow-300" />
+            <span className="text-yellow-200 font-medium">🏆 Score: {pointsToAward} pts</span>
           </div>
         )}
         <div className="flex gap-3">

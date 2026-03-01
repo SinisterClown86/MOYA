@@ -109,7 +109,7 @@ export default function EcoDecisions({ onExit, onScoreEarned }) {
           {[
             { label: 'Score', value: score, color: score >= 0 ? 'text-teal-300' : 'text-red-400' },
             { label: 'Correct', value: `${correct}/${scenarios.length}`, color: 'text-yellow-300' },
-            { label: 'AquaPts', value: `+${Math.max(0, Math.floor(score/8))}`, color: 'text-ocean-300' },
+            { label: 'Score',   value: `+${Math.max(0, Math.floor(score/8))}`, color: 'text-ocean-300' },
           ].map(({ label, value, color }) => (
             <div key={label} className="glass rounded-2xl p-4">
               <div className={`font-display text-2xl font-bold ${color}`}>{value}</div>
