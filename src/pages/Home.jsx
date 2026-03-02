@@ -128,7 +128,7 @@ export default function Home() {
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl font-bold text-white mb-4">How AquaWatch Works</h2>
+            <h2 className="font-display text-4xl font-bold text-white mb-4">How MOYA Works</h2>
             <p className="text-white/55 text-lg max-w-xl mx-auto">A complete ecosystem for water problem reporting, education, and community engagement</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -220,7 +220,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
-                AquaWatch isn't just about reporting — it's about understanding water.
+                MOYA isn't just about reporting — it's about understanding water.
                 Our Game Hub features six hand-crafted educational games covering water
                 science, infrastructure, purification, and real-world crisis management.
               </p>
@@ -343,7 +343,7 @@ export default function Home() {
               <h2 className="font-display text-4xl font-bold text-white mb-4">Ready to Make a Difference?</h2>
               <p className="text-white/60 mb-8 text-lg">Join thousands of citizens helping to improve water management in their communities.</p>
               <Link to={user ? "/map" : "/signup"} className="btn-teal inline-flex items-center gap-2 text-base px-10 py-4">
-                {user ? 'Open the Map' : 'Join AquaWatch'}
+                {user ? 'Open the Map' : 'Join MOYA'}
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -356,9 +356,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Droplets size={18} className="text-ocean-300" />
-            <span className="font-display font-bold text-white">AquaWatch</span>
+            <span className="font-display font-bold text-white">MOYA</span>
           </div>
-          <p className="text-white/30 text-sm">© 2024 AquaWatch. Helping communities, one drop at a time.</p>
+          <p className="text-white/30 text-sm">© 2026 WaterWorks. Helping communities, one drop at a time.</p>
           <div className="flex gap-6">
             <Link to="/meet-us" className="text-white/40 hover:text-white/70 text-sm transition-colors">About</Link>
             <Link to="/map" className="text-white/40 hover:text-white/70 text-sm transition-colors">Map</Link>
