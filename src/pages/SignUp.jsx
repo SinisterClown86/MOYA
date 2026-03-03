@@ -1,338 +1,164 @@
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { supabase } from "../lib/supabase"
-import {
-  Eye,
-  EyeOff,
-  Waves,
-  Upload,
-  X,
-  AlertCircle,
-  CheckCircle,
-  IdCard,
-  Baby,
-} from "lucide-react"
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+import { Droplets, Eye, EyeOff, CheckCircle, User, Mail, Lock } from 'lucide-react'
 
 export default function SignUp() {
+  const { signUp } = useAuth()
   const navigate = useNavigate()
-
-  const [step, setStep] = useState(1)
-  const [form, setForm] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirm: "",
-  })
-
+  const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' })
   const [showPass, setShowPass] = useState(false)
-  const [ageGroup, setAgeGroup] = useState(null)
-  const [idFile, setIdFile] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
 
-  /* ---------------- VALIDATION ---------------- */
+  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const validateStep1 = () => {
-    if (!form.fullName.trim()) return "Full name is required"
-    if (!form.email.includes("@")) return "Enter a valid email"
-    if (form.password.length < 8)
-      return "Password must be at least 8 characters"
-    if (form.password !== form.confirm)
-      return "Passwords do not match"
-    return ""
+  const validate = () => {
+    if (!form.name.trim()) return 'Full name is required'
+    if (!form.email.includes('@')) return 'Valid email required'
+    if (form.password.length < 8) return 'Password must be at least 8 characters'
+    if (form.password !== form.confirm) return 'Passwords do not match'
+    return null
   }
 
-  const handleStep1 = () => {
-    const err = validateStep1()
-    if (err) {
-      setError(err)
-      return
+  const handleSubmit = async e => {
+    e.preventDefault()
+    const err = validate()
+    if (err) { setError(err); return }
+    setError('')
+    setLoading(true)
+    const { error: signUpError } = await signUp(form.email, form.password, form.name)
+    if (signUpError) {
+      setError(signUpError.message)
+    } else {
+      setSuccess(true)
+      setTimeout(() => navigate('/login'), 3000)
     }
-    setError("")
-    setStep(2)
+    setLoading(false)
   }
 
-  /* ---------------- FILE VALIDATION ---------------- */
-
-  const handleFileChange = (file) => {
-    if (!file) return
-
-    if (!file.type.startsWith("image/")) {
-      setError("Only image files are allowed")
-      return
-    }
-
-    if (file.size > 10 * 1024 * 1024) {
-      setError("File must be less than 10MB")
-      return
-    }
-
-    setError("")
-    setIdFile(file)
+  const strength = () => {
+    const p = form.password
+    if (!p) return 0
+    let score = 0
+    if (p.length >= 8) score++
+    if (/[A-Z]/.test(p)) score++
+    if (/[0-9]/.test(p)) score++
+    if (/[^A-Za-z0-9]/.test(p)) score++
+    return score
   }
 
-  /* ---------------- SUBMIT ---------------- */
+  const strengthColors = ['', 'bg-red-500', 'bg-orange-400', 'bg-yellow-400', 'bg-teal-400']
+  const strengthLabels = ['', 'Weak', 'Fair', 'Good', 'Strong']
+  const s = strength()
 
-  const handleSubmit = async () => {
-    if (!ageGroup) {
-      setError("Please select your age group")
-      return
-    }
-
-    if (!idFile) {
-      setError("Please upload your ID document")
-      return
-    }
-
-    try {
-      setLoading(true)
-      setError("")
-
-      /* 1️⃣ Create user */
-      const { data, error: authError } =
-        await supabase.auth.signUp({
-          email: form.email,
-          password: form.password,
-          options: {
-            data: { full_name: form.fullName },
-          },
-        })
-
-      if (authError) throw authError
-
-      const userId = data?.user?.id
-      if (!userId) throw new Error("User creation failed")
-
-      /* 2️⃣ Upload ID */
-      const ext = idFile.name.split(".").pop()
-      const filePath = `id-documents/${userId}/id.${ext}`
-
-      const { error: uploadError } =
-        await supabase.storage
-          .from("id-documents")
-          .upload(filePath, idFile, { upsert: true })
-
-      if (uploadError) throw uploadError
-
-      const { data: publicUrlData } =
-        supabase.storage
-          .from("id-documents")
-          .getPublicUrl(filePath)
-
-      const publicUrl = publicUrlData?.publicUrl
-
-      /* 3️⃣ Update profile */
-      const { error: profileError } =
-        await supabase.from("profiles").upsert({
-          id: userId,
-          full_name: form.fullName,
-          id_document_url: publicUrl,
-          id_verified: false,
-          id_type:
-            ageGroup === "minor"
-              ? "birth_certificate"
-              : "government_id",
-          can_report: false,
-          points: 0,
-        })
-
-      if (profileError) throw profileError
-
-      /* 4️⃣ Redirect */
-      navigate("/login", {
-        state: {
-          msg: "Account created successfully. ID review takes up to 24 hours.",
-        },
-      })
-    } catch (err) {
-      setError(err?.message || "Sign up failed")
-    } finally {
-      setLoading(false)
-    }
+  if (success) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6">
+        <div className="card p-12 max-w-md w-full text-center">
+          <div className="w-20 h-20 rounded-full bg-teal-500/20 flex items-center justify-center mx-auto mb-6">
+            <CheckCircle size={40} className="text-teal-300" />
+          </div>
+          <h2 className="font-display text-3xl font-bold text-white mb-3">Account Created!</h2>
+          <p className="text-white/60 mb-4">Check your email to confirm your account. Redirecting to login...</p>
+          <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
+            <div className="h-full bg-teal-400 rounded-full animate-[width_3s_linear]" style={{ width: '100%', transition: 'width 3s linear' }} />
+          </div>
+        </div>
+      </div>
+    )
   }
-
-  /* ---------------- UI ---------------- */
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 pt-20 pb-12">
+    <div className="min-h-screen flex items-center justify-center px-6 py-24">
       <div className="w-full max-w-md">
-
-        {/* Header */}
         <div className="text-center mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 mb-4"
-          >
-            <Waves size={24} />
-            <span className="font-bold text-xl">
-              MOYA
-            </span>
-          </Link>
-
-          <h1 className="text-2xl font-bold mb-2">
-            Create Account
-          </h1>
-          <p className="text-sm opacity-60">
-            Step {step} of 2
-          </p>
+          <div className="w-14 h-14 rounded-2xl bg-ocean-500/20 border border-ocean-400/30 flex items-center justify-center mx-auto mb-4">
+            <Droplets size={28} className="text-ocean-300" />
+          </div>
+          <h1 className="font-display text-4xl font-bold text-white mb-2">Join MOYA</h1>
+          <p className="text-white/50">Create your account and start making a difference</p>
         </div>
 
-        {/* Error */}
-        {error && (
-          <div className="mb-4 p-3 border rounded text-sm text-red-400 flex items-center gap-2">
-            <AlertCircle size={16} />
-            {error}
-          </div>
-        )}
+        <form onSubmit={handleSubmit} className="card p-8 flex flex-col gap-5">
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 text-red-300 text-sm">
+              {error}
+            </div>
+          )}
 
-        {/* Step 1 */}
-        {step === 1 && (
-          <div className="flex flex-col gap-4">
-            <input
-              placeholder="Full Name"
-              value={form.fullName}
-              onChange={(e) =>
-                setForm({ ...form, fullName: e.target.value })
-              }
-              className="input-field"
-            />
-
-            <input
-              type="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={(e) =>
-                setForm({ ...form, email: e.target.value })
-              }
-              className="input-field"
-            />
-
+          <div className="space-y-1.5">
+            <label className="text-sm text-white/60 font-medium">Full Name</label>
             <div className="relative">
-              <input
-                type={showPass ? "text" : "password"}
-                placeholder="Password"
-                value={form.password}
-                onChange={(e) =>
-                  setForm({ ...form, password: e.target.value })
-                }
-                className="input-field pr-10"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPass(!showPass)}
-                className="absolute right-2 top-2"
-              >
-                {showPass ? (
-                  <EyeOff size={16} />
-                ) : (
-                  <Eye size={16} />
-                )}
-              </button>
+              <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
+              <input name="name" value={form.name} onChange={handleChange} placeholder="Your full name"
+                className="input-field pl-11" required />
             </div>
-
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              value={form.confirm}
-              onChange={(e) =>
-                setForm({ ...form, confirm: e.target.value })
-              }
-              className="input-field"
-            />
-
-            <button
-              type="button"
-              onClick={handleStep1}
-              className="btn-teal py-2"
-            >
-              Continue →
-            </button>
           </div>
-        )}
 
-        {/* Step 2 */}
-        {step === 2 && (
-          <div className="flex flex-col gap-4">
+          <div className="space-y-1.5">
+            <label className="text-sm text-white/60 font-medium">Email Address</label>
+            <div className="relative">
+              <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
+              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com"
+                className="input-field pl-11" required />
+            </div>
+          </div>
 
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => setAgeGroup("adult")}
-                className="flex-1 border p-3 rounded"
-              >
-                <IdCard size={20} />
-                <div>15+ Years</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setAgeGroup("minor")}
-                className="flex-1 border p-3 rounded"
-              >
-                <Baby size={20} />
-                <div>Under 15</div>
+          <div className="space-y-1.5">
+            <label className="text-sm text-white/60 font-medium">Password</label>
+            <div className="relative">
+              <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
+              <input name="password" type={showPass ? 'text' : 'password'} value={form.password} onChange={handleChange}
+                placeholder="At least 8 characters" className="input-field pl-11 pr-11" required />
+              <button type="button" onClick={() => setShowPass(!showPass)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70">
+                {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
-
-            {ageGroup && (
-              <label className="border-2 border-dashed p-6 rounded text-center cursor-pointer">
-                <Upload size={22} />
-                <p className="text-sm mt-2">
-                  Click to upload ID photo
-                </p>
-                <input
-                  type="file"
-                  accept="image/*"
-                  hidden
-                  onChange={(e) =>
-                    handleFileChange(e.target.files?.[0])
-                  }
-                />
-              </label>
-            )}
-
-            {idFile && (
-              <div className="relative">
-                <img
-                  src={URL.createObjectURL(idFile)}
-                  alt="preview"
-                  className="w-full h-40 object-cover rounded"
-                />
-                <button
-                  type="button"
-                  onClick={() => setIdFile(null)}
-                  className="absolute top-2 right-2"
-                >
-                  <X size={16} />
-                </button>
+            {form.password && (
+              <div className="flex items-center gap-2 mt-2">
+                <div className="flex gap-1 flex-1">
+                  {[1, 2, 3, 4].map(i => (
+                    <div key={i} className={`h-1 flex-1 rounded-full transition-colors duration-300 ${i <= s ? strengthColors[s] : 'bg-white/10'}`} />
+                  ))}
+                </div>
+                <span className={`text-xs font-medium ${s >= 3 ? 'text-teal-400' : s >= 2 ? 'text-yellow-400' : 'text-red-400'}`}>
+                  {strengthLabels[s]}
+                </span>
               </div>
             )}
+          </div>
 
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => setStep(1)}
-                className="border px-4 py-2 rounded"
-              >
-                Back
-              </button>
-
-              <button
-                type="button"
-                onClick={handleSubmit}
-                disabled={loading}
-                className="flex-1 btn-teal py-2"
-              >
-                {loading ? "Creating..." : "Create Account"}
-              </button>
+          <div className="space-y-1.5">
+            <label className="text-sm text-white/60 font-medium">Confirm Password</label>
+            <div className="relative">
+              <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
+              <input name="confirm" type="password" value={form.confirm} onChange={handleChange}
+                placeholder="Repeat your password" className="input-field pl-11" required />
+              {form.confirm && form.confirm === form.password && (
+                <CheckCircle size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-teal-400" />
+              )}
             </div>
           </div>
-        )}
 
-        <p className="text-center mt-5 text-sm opacity-60">
-          Already have an account?{" "}
-          <Link to="/login">Login</Link>
-        </p>
+          <button type="submit" disabled={loading} className="btn-primary w-full py-3.5 mt-1 flex items-center justify-center gap-2">
+            {loading ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                Creating account...
+              </>
+            ) : 'Create Account'}
+          </button>
+
+          <p className="text-center text-white/50 text-sm">
+            Already have an account?{' '}
+            <Link to="/login" className="text-ocean-300 hover:text-ocean-200 font-medium transition-colors">
+              Log in
+            </Link>
+          </p>
+        </form>
       </div>
     </div>
   )
