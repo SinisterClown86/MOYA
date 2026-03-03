@@ -46,6 +46,9 @@ export default function Navbar() {
           <Link to="/shop" className={`nav-link flex items-center gap-1.5 ${isActive('/shop') ? 'text-white' : ''}`}>
             <ShoppingBag size={14} />Shop
           </Link>
+          <Link to="/volunteer" className={`nav-link flex items-center gap-1.5 ${isActive('/volunteer') ? 'text-white' : ''}`}>
+            <ShoppingBag size={14} />Volunteer
+          </Link>
           <Link to="/games" className={`nav-link flex items-center gap-1.5 ${isActive('/games') ? 'text-white' : 'text-ocean-300/80'}`}>
             <Gamepad2 size={14} />Games
           </Link>
