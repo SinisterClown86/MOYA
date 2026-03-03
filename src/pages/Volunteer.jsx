@@ -31,9 +31,8 @@ const EVENTS = [
     difficulty: 'Easy',
     color: 'from-ocean-600/40 to-ocean-900/60',
     accent: '#0ea5e9',
-    emoji: '🌊',
     description:
-      "Join us for a major cleanup along the Nile bank. We provide gloves, bags, and refreshments."
+      "Join us for a major cleanup along the Nile bank. We provide gloves, bags, and refreshments. Help restore one of the world’s most iconic waterways."
   },
   {
     id: 2,
@@ -48,9 +47,8 @@ const EVENTS = [
     difficulty: 'Medium',
     color: 'from-teal-600/40 to-teal-900/60',
     accent: '#14b8a6',
-    emoji: '🧪',
     description:
-      'Learn to use professional water testing kits and help assess water quality.'
+      'Learn to use professional water testing kits and help assess water quality in local communities. Training provided.'
   },
   {
     id: 3,
@@ -65,9 +63,56 @@ const EVENTS = [
     difficulty: 'Medium',
     color: 'from-blue-600/40 to-blue-900/60',
     accent: '#3b82f6',
-    emoji: '📍',
     description:
-      "Document pollution sources and coastal erosion along Alexandria's coast."
+      "Document pollution sources and coastal erosion along Alexandria's coast. GPS devices and datasheets provided."
+  },
+  {
+    id: 4,
+    title: 'School Water Awareness Program',
+    date: 'April 12, 2026',
+    time: '9:00 AM – 1:00 PM',
+    location: 'Multiple Schools, Cairo',
+    category: 'Education',
+    spots: 15,
+    total: 30,
+    reward: 150,
+    difficulty: 'Easy',
+    color: 'from-emerald-600/40 to-emerald-900/60',
+    accent: '#10b981',
+    description:
+      'Deliver interactive water conservation lessons to students aged 8–14. Lesson plans provided.'
+  },
+  {
+    id: 5,
+    title: 'Underground Pipe Mapping Expedition',
+    date: 'April 20, 2026',
+    time: '8:00 AM – 5:00 PM',
+    location: 'Old Cairo District',
+    category: 'Infrastructure',
+    spots: 3,
+    total: 15,
+    reward: 500,
+    difficulty: 'Hard',
+    color: 'from-violet-600/40 to-violet-900/60',
+    accent: '#8b5cf6',
+    description:
+      'Work with engineers to map aging water infrastructure in historic areas. Requires physical fitness.'
+  },
+  {
+    id: 6,
+    title: 'Wetlands Restoration Day',
+    date: 'May 3, 2026',
+    time: '7:30 AM – 2:00 PM',
+    location: 'Lake Manzala, Damietta',
+    category: 'Restoration',
+    spots: 20,
+    total: 50,
+    reward: 350,
+    difficulty: 'Medium',
+    color: 'from-green-600/40 to-green-900/60',
+    accent: '#22c55e',
+    description:
+      "Plant native vegetation and remove invasive species in Egypt's largest natural lake."
   }
 ]
 
