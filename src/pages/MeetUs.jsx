@@ -1,3 +1,4 @@
+
 import { Github, Twitter, Linkedin, Droplets, Target, Eye, Heart } from 'lucide-react'
 
 const team = [
@@ -47,7 +48,7 @@ const team = [
 
   {
     name: 'Loay Alaa',
-    role: 'CBO (Chief BAKA Officer)',
+    role: 'CFO (Chief Financial Officer)',
     bio: 'Oversees budgeting, financial planning, accounting, and investor reporting.',
     avatar: 'LA',
     color: 'from-ocean-500 to-teal-500'
