@@ -15,13 +15,7 @@ const team = [
     avatar: 'ME',
     color: 'from-teal-600 to-ocean-600'
   },
-    {
-    name: 'Amro Ibrahim',
-    role: 'CIO (Chief Information Officer)',
-    bio: 'Leads IT strategy, systems, data management, and cybersecurity.',
-    avatar: 'AI',
-    color: 'from-ocean-600 to-teal-600'
-  },
+  
   {
     name: 'Kevin Martin',
     role: 'CMO (Chief Marketing Officer)',
@@ -57,6 +51,13 @@ const team = [
     bio: 'Oversees budgeting, financial planning, accounting, and investor reporting.',
     avatar: 'LA',
     color: 'from-ocean-500 to-teal-500'
+  },
+  {
+    name: 'Amro Ibrahim',
+    role: 'CIO (Chief Information Officer)',
+    bio: 'Leads IT strategy, systems, data management, and cybersecurity.',
+    avatar: 'AI',
+    color: 'from-ocean-600 to-teal-600'
   }
 ]
 
