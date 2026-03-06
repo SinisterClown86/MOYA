@@ -57,6 +57,24 @@ export default function Navbar() {
               <Shield size={14} />Admin
             </Link>
           )}
+
+          {/* Donate — special pill button */}
+          <Link
+            to="/donate"
+            className={`relative inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden group ${
+              isActive('/donate') ? 'ring-2 ring-rose-400/60' : ''
+            }`}
+            style={{
+              background: 'linear-gradient(135deg, #e11d48, #f43f5e)',
+              boxShadow: '0 2px 16px rgba(244,63,94,0.35)',
+            }}
+          >
+            {/* shimmer */}
+            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%)' }} />
+            <Heart size={13} className="fill-white relative z-10 group-hover:scale-110 transition-transform" />
+            <span className="relative z-10">Donate</span>
+          </Link>
         </div>
 
         {/* Auth area */}
@@ -111,6 +129,21 @@ export default function Navbar() {
               Admin Panel
             </Link>
           )}
+
+          {/* Donate row in mobile */}
+          <Link
+            to="/donate"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-white transition-all active:scale-95"
+            style={{
+              background: 'linear-gradient(135deg, rgba(225,29,72,0.25), rgba(244,63,94,0.15))',
+              border: '1px solid rgba(244,63,94,0.35)',
+            }}
+          >
+            <Heart size={15} className="fill-rose-400 text-rose-400" />
+            <span className="text-rose-300">Donate to MOYA</span>
+          </Link>
+
           <div className="border-t border-white/10 mt-2 pt-2">
             {user ? (
               <button onClick={() => { handleSignOut(); setMenuOpen(false) }} className="w-full text-left px-4 py-2.5 rounded-xl text-red-400 hover:bg-red-500/10">
