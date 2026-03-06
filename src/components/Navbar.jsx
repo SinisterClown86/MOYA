@@ -32,7 +32,7 @@ export default function Navbar() {
           <img
             src="/logo.png"
             alt="MOYA"
-            className="h-24 w-auto object-contain transition-opacity group-hover:opacity-80"
+            className="h-20 w-auto object-contain transition-opacity group-hover:opacity-80"
           />
         </Link>
 
