@@ -20,9 +20,7 @@ export default function Navbar() {
     await signOut()
     navigate('/')
   }
-
   const isActive = (path) => location.pathname === path
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled ? 'glass py-3 shadow-2xl shadow-black/30' : 'bg-transparent py-5'
@@ -35,7 +33,6 @@ export default function Navbar() {
             className="h-20 w-auto object-contain transition-opacity group-hover:opacity-80"
           />
         </Link>
-
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8 text-lg">
           <Link to="/" className={`nav-link ${isActive('/') ? 'text-white' : ''}`}>Home</Link>
@@ -57,8 +54,6 @@ export default function Navbar() {
               <Shield size={14} />Admin
             </Link>
           )}
-
-          {/* Donate — special pill button */}
           <Link
             to="/donate"
             className={`relative inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden group ${
@@ -69,15 +64,12 @@ export default function Navbar() {
               boxShadow: '0 2px 16px rgba(244,63,94,0.35)',
             }}
           >
-            {/* shimmer */}
             <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%)' }} />
             <Heart size={13} className="fill-white relative z-10 group-hover:scale-110 transition-transform" />
             <span className="relative z-10">Donate</span>
           </Link>
         </div>
-
-        {/* Auth area */}
         <div className="hidden md:flex items-center gap-3">
           {user ? (
             <div className="flex items-center gap-3">
@@ -101,13 +93,11 @@ export default function Navbar() {
             </>
           )}
         </div>
-
         {/* Mobile Menu Button */}
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden glass p-2 rounded-xl">
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
-
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="md:hidden glass mt-2 mx-4 rounded-2xl p-4 flex flex-col gap-2">
@@ -129,7 +119,6 @@ export default function Navbar() {
               Admin Panel
             </Link>
           )}
-
           {/* Donate row in mobile */}
           <Link
             to="/donate"
@@ -143,7 +132,6 @@ export default function Navbar() {
             <Heart size={15} className="fill-rose-400 text-rose-400" />
             <span className="text-rose-300">Donate to MOYA</span>
           </Link>
-
           <div className="border-t border-white/10 mt-2 pt-2">
             {user ? (
               <button onClick={() => { handleSignOut(); setMenuOpen(false) }} className="w-full text-left px-4 py-2.5 rounded-xl text-red-400 hover:bg-red-500/10">

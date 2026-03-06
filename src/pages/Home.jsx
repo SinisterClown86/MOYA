@@ -348,8 +348,6 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-
-            {/* Right: card stack — hidden on mobile, visible lg+ */}
             <div className="relative h-80 sm:h-96 hidden lg:block">
               <div className="absolute inset-0 bg-violet-500/5 rounded-3xl blur-3xl" />
 
@@ -415,8 +413,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── CTA ── */}
       <section className="py-16 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <div className="card p-8 sm:p-12 relative overflow-hidden">

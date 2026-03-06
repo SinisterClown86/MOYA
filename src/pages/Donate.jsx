@@ -31,16 +31,12 @@ export default function Donate() {
   return (
     <div className="min-h-screen overflow-x-hidden">
 
-      {/* ── Hero ── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
-        {/* Background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-ocean-950 via-[#071e2e] to-ocean-900" />
           <FloatingOrb style={{ top: '10%', left: '15%', width: 400, height: 400, background: 'rgba(20,184,166,0.08)' }} />
           <FloatingOrb style={{ bottom: '15%', right: '10%', width: 350, height: 350, background: 'rgba(244,63,94,0.07)', animationDelay: '2s' }} />
           <FloatingOrb style={{ top: '50%', left: '50%', width: 500, height: 500, background: 'rgba(14,165,233,0.05)', transform: 'translate(-50%,-50%)', animationDelay: '1s' }} />
-
-          {/* Floating water drops */}
           {[...Array(8)].map((_, i) => (
             <div key={i} className="absolute animate-float opacity-20"
               style={{
@@ -53,14 +49,10 @@ export default function Donate() {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8 animate-fade-in">
             <Heart size={13} className="text-rose-300 fill-rose-300" />
             <span className="text-rose-200 text-sm font-medium">Support MOYA's Mission</span>
           </div>
-
-          {/* Headline */}
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1] animate-slide-up">
             Every Drop
             <br />
@@ -73,8 +65,6 @@ export default function Donate() {
             Your donation powers MOYA's mission to protect Egypt's water resources<br />
             From community reports to national events and educational programs.
           </p>
-
-          {/* ── BIG DONATE BUTTON ── */}
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <a
               href="https://hcb.hackclub.com/donations/start/moya"
@@ -86,11 +76,8 @@ export default function Donate() {
                 boxShadow: '0 8px 40px rgba(244,63,94,0.45), 0 0 0 1px rgba(244,63,94,0.3)',
               }}
             >
-              {/* Shimmer overlay */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%)' }} />
-
-              {/* Pulse ring */}
               <div className="absolute inset-0 rounded-2xl animate-ping opacity-0 group-hover:opacity-20"
                 style={{ background: 'rgba(244,63,94,0.5)', animationDuration: '1.5s' }} />
 
@@ -103,15 +90,11 @@ export default function Donate() {
               Secure donation via Hack Club Bank · Tax-deductible
             </p>
           </div>
-
-          {/* Scroll hint */}
           <div className="mt-16 flex flex-col items-center gap-2 text-white/25 animate-bounce">
             <ChevronDown size={20} />
           </div>
         </div>
       </section>
-
-      {/* ── Why Donate ── */}
       <section className="py-20 sm:py-28 bg-ocean-900/40">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
@@ -125,15 +108,11 @@ export default function Donate() {
             MOYA is a community-driven platform fighting water mismanagement across Egypt.
             Your support directly fuels every report reviewed, every event organized, and every student taught.
           </p>
-
-          {/* Divider with wave */}
           <div className="flex items-center gap-4 mb-16">
             <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/10" />
             <Waves size={18} className="text-ocean-400" />
             <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/10" />
           </div>
-
-          {/* Impact Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <ImpactCard
               icon={Zap}
@@ -170,8 +149,6 @@ export default function Donate() {
           </div>
         </div>
       </section>
-
-      {/* ── How Your Donation Helps ── */}
       <section className="py-20 sm:py-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
@@ -187,9 +164,7 @@ export default function Donate() {
             </p>
           </div>
 
-          {/* Timeline steps */}
           <div className="relative">
-            {/* Vertical line */}
             <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal-500/40 via-ocean-500/30 to-transparent hidden sm:block" style={{ transform: 'translateX(-50%)' }} />
 
             <div className="flex flex-col gap-10 sm:gap-14">
@@ -224,7 +199,6 @@ export default function Donate() {
                 },
               ].map(({ side, icon: StepIcon, title, body, color }, i) => (
                 <div key={i} className={`relative flex items-center gap-6 sm:gap-0 ${side === 'right' ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
-                  {/* Content */}
                   <div className={`flex-1 ${side === 'right' ? 'sm:pl-12' : 'sm:pr-12'}`}>
                     <div className="glass rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-colors group hover:scale-[1.02] duration-300"
                       style={{ boxShadow: `0 4px 30px ${color}08` }}>
@@ -240,12 +214,8 @@ export default function Donate() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Center dot */}
                   <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 items-center justify-center z-10"
                     style={{ background: '#082f49', borderColor: color, boxShadow: `0 0 12px ${color}60` }} />
-
-                  {/* Spacer for opposite side */}
                   <div className="flex-1 hidden sm:block" />
                 </div>
               ))}
@@ -253,8 +223,6 @@ export default function Donate() {
           </div>
         </div>
       </section>
-
-      {/* ── Final CTA ── */}
       <section className="py-20 sm:py-28 bg-ocean-900/30">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <div className="relative overflow-hidden rounded-3xl p-10 sm:p-16 border border-white/10"

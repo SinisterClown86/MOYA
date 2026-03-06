@@ -16,8 +16,6 @@ const DIFFICULTY_COLORS = {
   Hard:   'text-red-300    bg-red-500/15    border-red-500/30',
   Expert: 'text-purple-300 bg-purple-500/15 border-purple-500/30',
 }
-
-// ─── Single Game Card ─────────────────────────────────────────────────────────
 function GameCard({ game, unlocked, userPoints, onPlay, onUnlock }) {
   const Icon = game.icon || Gamepad2
   const canAfford = userPoints >= game.cost
@@ -43,7 +41,6 @@ function GameCard({ game, unlocked, userPoints, onPlay, onUnlock }) {
           style={{ background: `radial-gradient(ellipse at 50% 0%, ${game.accentColor}18 0%, transparent 70%)` }} />
       )}
 
-      {/* Top badges */}
       <div className="absolute top-3 right-3 z-10 flex gap-1.5 flex-wrap justify-end max-w-[65%]">
         {game.newBadge && (
           <span className="badge bg-orange-500/30 text-orange-300 border border-orange-500/40 text-[10px] tracking-wider">NEW</span>
@@ -68,7 +65,6 @@ function GameCard({ game, unlocked, userPoints, onPlay, onUnlock }) {
       </div>
 
       <div className="relative z-10 p-4 sm:p-5 flex flex-col gap-3 sm:gap-3.5 flex-1">
-        {/* Icon + title */}
         <div className="flex items-start gap-3 sm:gap-3.5">
           <div className="rounded-xl sm:rounded-2xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0
             group-hover:scale-110 transition-transform duration-300"
@@ -105,8 +101,6 @@ function GameCard({ game, unlocked, userPoints, onPlay, onUnlock }) {
         </div>
 
         <div className="flex-1" />
-
-        {/* CTA */}
         {game.comingSoon ? (
           <div className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white/30 text-xs sm:text-sm">
             <Clock size={13} />Coming Soon
@@ -144,8 +138,6 @@ function GameCard({ game, unlocked, userPoints, onPlay, onUnlock }) {
     </div>
   )
 }
-
-// ─── Unlock Modal ─────────────────────────────────────────────────────────────
 function UnlockModal({ game, userPoints, onConfirm, onCancel, loading }) {
   if (!game) return null
   return (
@@ -182,8 +174,6 @@ function UnlockModal({ game, userPoints, onConfirm, onCancel, loading }) {
     </div>
   )
 }
-
-// ─── Game Shell ───────────────────────────────────────────────────────────────
 function GameShell({ gameId, onExit, onScoreEarned, userPoints, onSpendPoints }) {
   const game = GAME_REGISTRY.find(g => g.id === gameId)
   if (!game) return null
@@ -227,8 +217,6 @@ function GameShell({ gameId, onExit, onScoreEarned, userPoints, onSpendPoints })
     </div>
   )
 }
-
-// ─── Main Page ────────────────────────────────────────────────────────────────
 export default function GameHub() {
   const { user, profile, refreshProfile } = useAuth()
   const [unlockedGames, setUnlockedGames] = useState(FREE_GAME_IDS)
@@ -299,7 +287,6 @@ export default function GameHub() {
   return (
     <div className="min-h-screen pb-16">
 
-      {/* ── Hero ── */}
       <div className="relative overflow-hidden pt-20 sm:pt-24 pb-10 sm:pb-14">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-ocean-950 via-ocean-900/80 to-transparent" />
@@ -346,8 +333,6 @@ export default function GameHub() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
-        {/* ── Wallet / login CTA ── */}
         {user ? (
           <div className="glass rounded-2xl p-4 mb-6 sm:mb-8">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -395,11 +380,8 @@ export default function GameHub() {
             </div>
           </div>
         )}
-
-        {/* ── Main layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_270px] gap-6 sm:gap-8">
           <div>
-            {/* Filter tabs — scrollable on mobile */}
             <div className="flex gap-2 mb-5 sm:mb-6 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-hide">
               {[['all','All Games'],['free','Free'],['premium','Premium'],['engine','🎮 Engine']].map(([key, label]) => (
                 <button key={key} onClick={() => setFilter(key)}
@@ -440,9 +422,6 @@ export default function GameHub() {
               </div>
             )}
           </div>
-
-          {/* ── Sidebar ── */}
-          {/* Mobile: collapsible toggle */}
           <div>
             <button
               onClick={() => setShowSidebar(s => !s)}
@@ -453,7 +432,6 @@ export default function GameHub() {
             </button>
 
             <div className={`flex flex-col gap-4 sm:gap-5 ${showSidebar ? 'flex' : 'hidden'} lg:flex`}>
-              {/* How it works */}
               <div className="glass rounded-2xl p-4 sm:p-5">
                 <h3 className="font-display text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                   <Trophy size={16} className="text-yellow-400" />How It Works
@@ -471,8 +449,6 @@ export default function GameHub() {
                 ))}
                 <Link to="/map" className="w-full btn-primary text-center block py-2.5 text-xs sm:text-sm mt-4">Start Reporting →</Link>
               </div>
-
-              {/* Unlock prices */}
               <div className="glass rounded-2xl p-4 sm:p-5">
                 <h3 className="font-display text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                   <Lock size={14} className="text-white/50" />Unlock Prices
@@ -493,8 +469,6 @@ export default function GameHub() {
                   )
                 })}
               </div>
-
-              {/* Leaderboard */}
               <div className="glass rounded-2xl p-4 sm:p-5">
                 <h3 className="font-display text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                   <Trophy size={15} className="text-yellow-400" />Top Players
