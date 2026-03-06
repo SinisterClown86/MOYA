@@ -12,6 +12,7 @@ import Shop from './pages/Shop'
 import Profile from './pages/Profile'
 import GameHub from './pages/GameHub'
 import Volunteer from './pages/Volunteer'
+import Donate from './pages/Donate'
 import Footer from './components/Footer'
 
 const ProtectedRoute = ({ children }) => {
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
         <Route path="/games" element={<GameHub />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
       <AICompanion />
       <Footer />
