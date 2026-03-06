@@ -28,13 +28,11 @@ export default function Navbar() {
       scrolled ? 'glass py-3 shadow-2xl shadow-black/30' : 'bg-transparent py-5'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-
-        {/* Logo */}
         <Link to="/" className="flex items-center group">
           <img
             src="/logo.png"
             alt="MOYA"
-            className="h-10 w-auto object-contain transition-opacity group-hover:opacity-80"
+            className="h-16 w-auto object-contain transition-opacity group-hover:opacity-80"
           />
         </Link>
 
