@@ -7,7 +7,7 @@ const team = [
     role: 'CEO',
     roleLabel: 'Chief Executive Officer',
     jobDesc: 'Leads company vision, strategy, partnerships, investor relations, and overall business development.',
-    bio: 'Tareq is a driven young leader with a deep passion for environmental tech. He founded MOYA with the belief that technology can solve the water crises facing Egypt. Outside of work he enjoys field visits to rural communities along the Nile to better understand the real problems people face.',
+    bio: '',
     quote: 'The more you understand this world, the more you destroy yourself. That\'s why fools are happy, and intelligent peoepl live in loneliness.',
     avatar: 'TQ',
     photo: 'https://i.ibb.co/BVvWX7jV/tareqkhalil.png',
@@ -23,7 +23,7 @@ const team = [
     role: 'CTO',
     roleLabel: 'Chief Technical Officer',
     jobDesc: 'Oversees system architecture, platform development, security, and the technical roadmap.',
-    bio: 'Mohamed is the engineer behind MOYA\'s entire technical stack. He obsesses over clean architecture and performance, and has a gift for turning complex infrastructure problems into elegant solutions. When not coding, he\'s usually reading about distributed systems or mentoring junior developers.',
+    bio: '',
     quote: 'Good architecture is invisible — until it breaks.',
     avatar: 'ME',
     photo: '', // insert image URL here
@@ -40,7 +40,7 @@ const team = [
     role: 'CMO',
     roleLabel: 'Chief Marketing Officer',
     jobDesc: 'Manages branding, digital campaigns, content strategy, partnerships, and user acquisition.',
-    bio: 'Kevin has a rare combination of creative instinct and data-driven thinking. He joined MOYA because he believes environmental causes deserve world-class marketing. He\'s the person who made MOYA\'s story resonate with thousands of users across Egypt and beyond.',
+    bio:'',
     quote: 'Every campaign should leave people more informed than before.',
     avatar: 'KM',
     photo: '', // insert image URL here
@@ -57,7 +57,7 @@ const team = [
     role: 'Game Developer',
     roleLabel: 'Game Developer',
     jobDesc: 'Designs educational gameplay mechanics, user engagement flows, and gamification strategy.',
-    bio: 'Daniel is a self-taught game developer who turned his passion for interactive media into a tool for education. He single-handedly built MOYA\'s entire Game Hub and is constantly experimenting with new ways to make water science fun and memorable for all ages.',
+    bio: '',
     quote: 'If it isn\'t fun, it isn\'t going to teach anyone anything.',
     avatar: 'DG',
     photo: '', // insert image URL here
@@ -74,7 +74,7 @@ const team = [
     role: 'GD',
     roleLabel: 'Graphic Designer',
     jobDesc: 'Designs all visual content, branding materials, and marketing graphics.',
-    bio: 'Asser has an eye for detail that makes everything MOYA publishes look intentional and polished. He approaches design as a form of advocacy — every visual he creates is meant to make people stop, pay attention, and care. He\'s also an avid illustrator in his spare time.',
+    bio: '',
     quote: 'Design isn\'t decoration — it\'s communication.',
     avatar: 'AS',
     photo: '', // insert image URL here
@@ -91,7 +91,7 @@ const team = [
     role: 'CCO',
     roleLabel: 'Chief Communications Officer',
     jobDesc: 'Manages company image, media relations, partnerships, and public communication.',
-    bio: 'Yousef is the voice of MOYA — calm, clear, and always on message. He has a background in journalism and public relations, which gives him a unique ability to translate technical water issues into stories the public actually cares about. He speaks three languages fluently.',
+    bio: '',
     quote: 'Clarity of message is as important as clarity of water.',
     avatar: 'YA',
     photo: '', // insert image URL here
@@ -108,7 +108,7 @@ const team = [
     role: 'CFO',
     roleLabel: 'Chief Financial Officer',
     jobDesc: 'Oversees budgeting, financial planning, accounting, and investor reporting.',
-    bio: 'Loay keeps MOYA grounded in financial reality without ever losing sight of the mission. He has a sharp analytical mind and a genuine belief that sustainable impact requires sustainable finances. Outside the office he follows global impact investing trends closely.',
+    bio: '',
     quote: 'Numbers tell the story — make sure it\'s one worth reading.',
     avatar: 'LA',
     photo: '', // insert image URL here
@@ -125,7 +125,7 @@ const team = [
     role: 'CIO',
     roleLabel: 'Chief Information Officer',
     jobDesc: 'Leads IT strategy, systems, data management, and cybersecurity.',
-    bio: 'Amro is the quiet guardian of everything that runs behind the scenes at MOYA. He ensures the platform stays fast, secure, and resilient. He has a deep background in cybersecurity and a personal commitment to making sure citizens\' data is never compromised.',
+    bio: '',
     quote: 'Data is only as clean as the systems that hold it.',
     avatar: 'AI',
     photo: '', // insert image URL here
@@ -144,16 +144,16 @@ const supervisor = {
   role: 'Supervisor',
   roleLabel: 'Project Supervisor',
   jobDesc: 'Senior environmental strategist guiding the MOYA initiative through research, validation, and deployment.',
-  bio: 'Dr. Mohamed Gamal brings decades of hands-on experience in water governance and environmental policy to MOYA. He has advised government bodies across the region on sustainable water management and saw in MOYA the potential to bring citizen-driven accountability to a field that desperately needs it. He mentors the team not just technically but in how to think about systemic change.',
+  bio: '',
   quote: 'The next generation of water stewards is already building the tools we need.',
   avatar: 'MG',
-  photo: '', // insert image URL here
+  photo: 'https://i.ibb.co/d0L3NnsQ/supervisor.png',
   color: 'from-violet-500 to-indigo-600',
   accent: '#a78bfa',
   favLang: 'R / MATLAB',
   extra: { label: 'Expertise', value: 'Environmental policy, hydrology, water governance' },
-  email: '', // insert email here
-  phone: '', // insert phone here
+  email: 'm7maadgamal112001@gmail.com',
+  phone: '+20 11 11077227',
   socials: { twitter: '#', github: '#', linkedin: '#' }
 }
 
