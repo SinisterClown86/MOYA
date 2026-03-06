@@ -94,13 +94,11 @@ export default function Shop() {
       })
       if (error) throw error
 
-      // Deduct points
       await supabase.rpc('decrement_user_points', {
         user_id_param: user.id,
         points_param: item.points_cost
       })
 
-      // Decrement stock
       if (item.stock !== null) {
         await supabase.from('shop_items').update({ stock: item.stock - 1 }).eq('id', item.id)
       }
@@ -121,7 +119,6 @@ export default function Shop() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-5">
             <ShoppingBag size={14} className="text-ocean-300" />
@@ -159,7 +156,6 @@ export default function Shop() {
           </div>
         )}
 
-        {/* Category Filter */}
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map(cat => (
             <button

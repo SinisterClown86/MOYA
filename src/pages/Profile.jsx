@@ -35,7 +35,6 @@ export default function Profile() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Profile Header */}
         <div className="card p-8 mb-8 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-ocean-500/5 rounded-full blur-3xl" />
           <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6">
@@ -65,7 +64,6 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Stats Row */}
         <div className="grid grid-cols-3 gap-4 mb-8">
           {[
             { label: 'Total Reports', value: reports.length, color: 'text-white' },
@@ -79,7 +77,6 @@ export default function Profile() {
           ))}
         </div>
 
-        {/* Tabs */}
         <div className="flex gap-2 mb-6 glass p-1.5 rounded-2xl w-fit">
           {[['reports', 'My Reports'], ['redemptions', 'Redemptions']].map(([key, label]) => (
             <button key={key} onClick={() => setTab(key)}

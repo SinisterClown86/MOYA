@@ -58,7 +58,6 @@ export default function Home() {
   return (
     <div className="min-h-screen">
 
-      {/* ── Hero ── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-20 pb-16">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-ocean-950 via-ocean-900 to-ocean-800" />
@@ -98,7 +97,6 @@ export default function Home() {
             Volunteer at real events, play water-themed games, and help build a better water future.
           </p>
 
-          {/* CTA buttons — 2×2 grid on mobile, row on sm+ */}
           <div className="grid grid-cols-2 sm:flex sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-slide-up px-2" style={{ animationDelay: '0.2s' }}>
             <Link to="/map" className="btn-primary flex items-center justify-center gap-2 text-sm sm:text-base px-4 sm:px-8 py-3 sm:py-4">
               <Map size={16} />
@@ -126,7 +124,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Stats ── */}
       <section className="py-12 sm:py-20 bg-ocean-900/50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
@@ -138,7 +135,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Features ── */}
       <section className="py-16 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 sm:mb-16">
@@ -154,7 +150,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── How it works steps ── */}
       <section className="py-16 sm:py-20 bg-ocean-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-center">
@@ -198,7 +193,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Volunteer Section ── */}
       <section className="py-16 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10">
@@ -219,7 +213,6 @@ export default function Home() {
             ))}
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 p-6 sm:p-10 md:p-14 items-center">
-              {/* Left */}
               <div>
                 <div className="inline-flex items-center gap-2 glass px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-5 sm:mb-6">
                   <Heart size={13} className="text-rose-300" />
@@ -264,7 +257,6 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Right: stat cards */}
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {[
                   { icon: Heart,  value: '500+', label: 'Active Volunteers',     color: '#f43f5e' },
@@ -288,12 +280,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Game Hub ── */}
       <section className="py-16 sm:py-24 bg-ocean-900/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center">
 
-            {/* Left */}
             <div>
               <div className="inline-flex items-center gap-2 glass px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-5 sm:mb-6">
                 <Gamepad2 size={13} className="text-violet-300" />

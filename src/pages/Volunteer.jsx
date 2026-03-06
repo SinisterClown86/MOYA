@@ -8,7 +8,6 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-/* ─────────────────────────── data ─────────────────────────── */
 const EVENTS = [
   {
     id: 1,
@@ -112,16 +111,8 @@ const CATEGORY_COLORS = {
   Restoration:    'text-green-300 bg-green-500/15',
 }
 
-/* ──────────────────────── helpers ──────────────────────────── */
-
-/**
- * Sends a confirmation e-mail via EmailJS (free tier).
- * Replace SERVICE_ID / TEMPLATE_ID / PUBLIC_KEY with your EmailJS credentials,
- * OR swap this function body for any other email provider (Resend, SendGrid, etc.)
- */
 async function sendConfirmationEmail({ firstName, lastName, email, eventTitle, eventDate, eventLocation }) {
-  // ── EmailJS REST API (no SDK required) ──────────────────────
-  // Set these once in your .env or replace the strings directly:
+
   const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID'
   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
   const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || 'YOUR_PUBLIC_KEY'
@@ -148,11 +139,9 @@ async function sendConfirmationEmail({ firstName, lastName, email, eventTitle, e
   if (!res.ok) {
     const text = await res.text()
     console.warn('EmailJS warning:', text)
-    // Non-fatal – registration still succeeds even if email fails.
   }
 }
 
-/* ──────────────────────── EventCard ────────────────────────── */
 function EventCard({ event, onRegister, registered }) {
   const spotsLeft = event.total - event.spots
   const pct       = (spotsLeft / event.total) * 100
@@ -170,7 +159,6 @@ function EventCard({ event, onRegister, registered }) {
       />
 
       <div className="relative z-10 p-5 flex flex-col gap-4 flex-1">
-        {/* header row */}
         <div className="flex items-start justify-between gap-3">
           <div className="text-3xl">{event.emoji}</div>
           <div className="flex gap-1.5 flex-wrap justify-end">
@@ -179,20 +167,17 @@ function EventCard({ event, onRegister, registered }) {
           </div>
         </div>
 
-        {/* title + description */}
         <div>
           <h3 className="font-display text-lg font-bold text-white mb-1 leading-tight">{event.title}</h3>
           <p className="text-white/50 text-sm leading-relaxed line-clamp-2">{event.description}</p>
         </div>
 
-        {/* meta */}
         <div className="flex flex-col gap-1.5 text-xs text-white/50">
           <div className="flex items-center gap-2"><Calendar size={12} style={{ color: event.accent }} />{event.date}</div>
           <div className="flex items-center gap-2"><Clock    size={12} style={{ color: event.accent }} />{event.time}</div>
           <div className="flex items-center gap-2"><MapPin   size={12} style={{ color: event.accent }} />{event.location}</div>
         </div>
 
-        {/* spots bar */}
         <div>
           <div className="flex justify-between text-xs text-white/40 mb-1.5">
             <span className="flex items-center gap-1"><Users size={10} />{spotsLeft}/{event.total} joined</span>
@@ -203,7 +188,6 @@ function EventCard({ event, onRegister, registered }) {
           </div>
         </div>
 
-        {/* footer */}
         <div className="flex items-center justify-end mt-auto pt-2 border-t border-white/10">
           {registered ? (
             <div className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-500/20 border border-teal-500/30 text-teal-300 text-sm">
@@ -226,7 +210,6 @@ function EventCard({ event, onRegister, registered }) {
   )
 }
 
-/* ──────────────────────── Field helper ─────────────────────── */
 function Field({ label, icon: Icon, accent = '#0ea5e9', error, children }) {
   return (
     <div className="flex flex-col gap-1.5">
@@ -244,7 +227,6 @@ function Field({ label, icon: Icon, accent = '#0ea5e9', error, children }) {
   )
 }
 
-/* ──────────────────────── RegisterModal ────────────────────── */
 function RegisterModal({ event, onClose, onSuccess }) {
   const { user, profile } = useAuth()
 
@@ -259,7 +241,7 @@ function RegisterModal({ event, onClose, onSuccess }) {
   })
   const [errors,  setErrors]  = useState({})
   const [loading, setLoading] = useState(false)
-  const [step,    setStep]    = useState('form') // 'form' | 'success'
+  const [step,    setStep]    = useState('form') 
 
   const set = (key, val) => {
     setForm(f => ({ ...f, [key]: val }))
@@ -287,7 +269,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
 
     setLoading(true)
     try {
-      // 1. Save to Supabase
       const { error: dbErr } = await supabase.from('volunteer_registrations').insert({
         event_id:       event.id,
         event_title:    event.title,
@@ -302,7 +283,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
       })
       if (dbErr) throw dbErr
 
-      // 2. Send confirmation email (non-fatal)
       await sendConfirmationEmail({
         firstName:     form.firstName,
         lastName:      form.lastName,
@@ -327,13 +307,10 @@ function RegisterModal({ event, onClose, onSuccess }) {
         className="relative rounded-3xl p-0 max-w-lg w-full border border-white/15 shadow-2xl animate-slide-up max-h-[92vh] overflow-hidden flex flex-col"
         style={{ background: 'linear-gradient(160deg,rgba(6,40,68,0.98),rgba(10,60,95,0.95))' }}
       >
-        {/* Decorative top gradient */}
         <div
           className="absolute top-0 inset-x-0 h-40 pointer-events-none rounded-t-3xl"
           style={{ background: `linear-gradient(180deg,${accent}22 0%,transparent 100%)` }}
         />
-
-        {/* ── Success state ── */}
         {step === 'success' ? (
           <div className="relative z-10 flex flex-col items-center justify-center gap-5 px-8 py-12 text-center">
             <div
@@ -367,9 +344,7 @@ function RegisterModal({ event, onClose, onSuccess }) {
             </button>
           </div>
         ) : (
-          /* ── Form state ── */
           <>
-            {/* Header */}
             <div className="relative z-10 flex items-start justify-between gap-3 px-7 pt-7 pb-4 shrink-0">
               <div>
                 <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Volunteer Registration</p>
@@ -386,7 +361,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
               </button>
             </div>
 
-            {/* Scrollable form body */}
             <div className="relative z-10 overflow-y-auto flex-1 px-7 pb-7">
               {errors._global && (
                 <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 text-red-300 text-sm mb-5">
@@ -395,7 +369,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
               )}
 
               <div className="flex flex-col gap-5">
-                {/* Name row */}
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="First Name" icon={User} accent={accent} error={errors.firstName}>
                     <input
@@ -416,8 +389,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
                     />
                   </Field>
                 </div>
-
-                {/* Birth date */}
                 <Field label="Date of Birth" icon={Cake} accent={accent} error={errors.birthDate}>
                   <input
                     type="date"
@@ -428,8 +399,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
                     style={{ colorScheme: 'dark' }}
                   />
                 </Field>
-
-                {/* Email */}
                 <Field label="Email Address" icon={Mail} accent={accent} error={errors.email}>
                   <input
                     type="email"
@@ -440,8 +409,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
                   />
                   <p className="text-white/30 text-[11px]">A confirmation email will be sent here.</p>
                 </Field>
-
-                {/* Phone */}
                 <Field label="Phone Number" icon={Phone} accent={accent} error={errors.phone}>
                   <input
                     type="tel"
@@ -451,8 +418,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
                     className="input-field"
                   />
                 </Field>
-
-                {/* Message */}
                 <Field label="Why do you want to volunteer? (optional)" accent={accent}>
                   <textarea
                     value={form.message}
@@ -462,8 +427,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
                     className="input-field resize-none"
                   />
                 </Field>
-
-                {/* Actions */}
                 <div className="flex gap-3 pt-1">
                   <button onClick={onClose} className="flex-1 btn-secondary py-3 text-sm">
                     Cancel
@@ -490,7 +453,6 @@ function RegisterModal({ event, onClose, onSuccess }) {
   )
 }
 
-/* ──────────────────────── Main page ────────────────────────── */
 export default function Volunteer() {
   const { user } = useAuth()
   const [filter,        setFilter]        = useState('All')
@@ -510,7 +472,6 @@ export default function Volunteer() {
 
   return (
     <div className="min-h-screen pb-16">
-      {/* ── Toast banner ── */}
       {successBanner && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[5000] animate-slide-up pointer-events-none">
           <div className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-teal-900/95 border border-teal-400/40 shadow-2xl backdrop-blur-xl">
@@ -522,8 +483,6 @@ export default function Volunteer() {
           </div>
         </div>
       )}
-
-      {/* ── Hero ── */}
       <div className="relative overflow-hidden pt-28 pb-16">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-ocean-950 via-ocean-900/80 to-transparent" />
@@ -574,7 +533,6 @@ export default function Volunteer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        {/* ── How it works ── */}
         <div className="glass rounded-3xl p-8 mb-12 grid sm:grid-cols-4 gap-6 text-center">
           {[
             { n: '1', title: 'Browse Events', desc: 'Find events near you that match your interests and schedule' },
@@ -591,8 +549,6 @@ export default function Volunteer() {
             </div>
           ))}
         </div>
-
-        {/* ── Category filter ── */}
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map(cat => (
             <button
@@ -606,8 +562,6 @@ export default function Volunteer() {
             </button>
           ))}
         </div>
-
-        {/* ── Events grid ── */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {filtered.map(event => (
             <EventCard
@@ -621,8 +575,6 @@ export default function Volunteer() {
             />
           ))}
         </div>
-
-        {/* ── Bottom CTA for non-users ── */}
         {!user && (
           <div className="glass rounded-3xl p-10 text-center border border-ocean-400/20">
             <div className="text-5xl mb-4">🌊</div>
@@ -639,8 +591,6 @@ export default function Volunteer() {
           </div>
         )}
       </div>
-
-      {/* ── Modal ── */}
       {registerModal && (
         <RegisterModal
           event={registerModal}

@@ -8,7 +8,6 @@ import {
   Loader, AlertTriangle, Droplets, Locate, Video, CheckCircle2, Send
 } from 'lucide-react'
 
-// Fix leaflet default icon
 delete L.Icon.Default.prototype._getIconUrl
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -51,7 +50,6 @@ function MapClickHandler({ onClick }) {
   return null
 }
 
-// ─── Submit Report Modal ───────────────────────────────────────────────────
 function SubmitModal({ latlng, onClose, onSuccess }) {
   const { user } = useAuth()
   const [form, setForm] = useState({ title: '', description: '' })
@@ -165,7 +163,6 @@ function SubmitModal({ latlng, onClose, onSuccess }) {
             />
           </div>
 
-          {/* Photos */}
           <div>
             <label className="text-sm text-white/60 mb-1.5 block">Photos (max 5)</label>
             <label className="flex flex-col items-center gap-2 p-5 border-2 border-dashed border-white/20 rounded-xl cursor-pointer hover:border-ocean-400/50 transition-colors group">
@@ -190,7 +187,6 @@ function SubmitModal({ latlng, onClose, onSuccess }) {
             )}
           </div>
 
-          {/* Video */}
           <div>
             <label className="text-sm text-white/60 mb-1.5 block">Video Proof (optional, max 100MB)</label>
             <label className="flex flex-col items-center gap-2 p-5 border-2 border-dashed border-white/20 rounded-xl cursor-pointer hover:border-teal-400/50 transition-colors group">
@@ -232,7 +228,6 @@ function SubmitModal({ latlng, onClose, onSuccess }) {
   )
 }
 
-// ─── Solve Report Modal ────────────────────────────────────────────────────
 function SolveModal({ report, onClose, onSuccess }) {
   const { user } = useAuth()
   const [description, setDescription] = useState('')
@@ -350,7 +345,6 @@ function SolveModal({ report, onClose, onSuccess }) {
   )
 }
 
-// ─── Report Card (popup content) ──────────────────────────────────────────
 function ReportCard({ report, onSolveClick, currentUserId }) {
   const [imgIdx, setImgIdx] = useState(0)
   const images = report.image_urls || []
@@ -403,8 +397,7 @@ function ReportCard({ report, onSolveClick, currentUserId }) {
         )}
       </div>
 
-      {/* Solve button — only if approved (not yet resolved) and user is logged in */}
-      {!isResolved && report.status === 'approved' && currentUserId && (
+=      {!isResolved && report.status === 'approved' && currentUserId && (
         <button
           onClick={() => onSolveClick(report)}
           className="mt-3 w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-green-500/15 border border-green-500/30 text-green-300 hover:bg-green-500/25 transition-colors text-xs font-medium"
@@ -417,7 +410,6 @@ function ReportCard({ report, onSolveClick, currentUserId }) {
   )
 }
 
-// ─── Main Map Page ─────────────────────────────────────────────────────────
 export default function MapPage() {
   const { user } = useAuth()
   const [reports, setReports] = useState([])
@@ -434,7 +426,7 @@ export default function MapPage() {
     const { data } = await supabase
       .from('reports')
       .select('*')
-      .in('status', ['approved', 'resolved'])  // show approved + resolved (until admin hides)
+      .in('status', ['approved', 'resolved']) 
     setReports(data || [])
     setLoading(false)
   }, [])
@@ -481,7 +473,6 @@ export default function MapPage() {
 
   return (
     <div className="flex flex-col h-screen pt-16">
-      {/* Controls bar */}
       <div className="glass border-b border-white/10 px-6 py-3 flex items-center justify-between gap-4 z-10 flex-wrap">
         <div className="flex items-center gap-2">
           <MapPin size={16} className="text-ocean-300" />
@@ -497,7 +488,6 @@ export default function MapPage() {
           )}
           {user ? (
             <div className="flex items-center gap-2">
-              {/* Use my location button */}
               <button
                 onClick={handleUseMyLocation}
                 disabled={geoLoading}
@@ -509,7 +499,6 @@ export default function MapPage() {
                 {geoLoading ? 'Locating...' : 'Use My Location'}
               </button>
 
-              {/* Report by map click */}
               <button
                 onClick={() => setAddMode(!addMode)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
@@ -529,7 +518,6 @@ export default function MapPage() {
         </div>
       </div>
 
-      {/* Map */}
       <div className="flex-1 relative">
         {loading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-ocean-950/50 backdrop-blur-sm">
@@ -576,7 +564,6 @@ export default function MapPage() {
           )}
         </MapContainer>
 
-        {/* Legend */}
         <div className="absolute bottom-6 left-6 z-[1000] glass rounded-xl p-3 flex flex-col gap-2">
           <p className="text-xs text-white/50 font-medium uppercase tracking-wider">Legend</p>
           <div className="flex items-center gap-2">
@@ -594,7 +581,6 @@ export default function MapPage() {
         </div>
       </div>
 
-      {/* Modals */}
       {showModal && pendingPin && (
         <SubmitModal
           latlng={pendingPin}

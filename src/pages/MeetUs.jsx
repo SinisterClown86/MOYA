@@ -26,13 +26,13 @@ const team = [
     bio: '',
     quote: 'Good architecture is invisible — until it breaks.',
     avatar: 'ME',
-    photo: '', // insert image URL here
+    photo: '',
     color: 'from-teal-600 to-ocean-600',
     accent: '#14b8a6',
     favLang: 'TypeScript',
     extra: { label: 'Stack', value: 'React, Supabase, Node.js, PostGIS' },
-    email: '', // insert email here
-    phone: '', // insert phone here
+    email: '', 
+    phone: '', 
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -43,13 +43,13 @@ const team = [
     bio:'',
     quote: 'Every campaign should leave people more informed than before.',
     avatar: 'KM',
-    photo: '', // insert image URL here
+    photo: '', 
     color: 'from-ocean-600 to-teal-600',
     accent: '#38bdf8',
     favLang: 'JavaScript',
     extra: { label: 'Specialty', value: 'Growth marketing & environmental storytelling' },
-    email: '', // insert email here
-    phone: '', // insert phone here
+    email: '', 
+    phone: '', 
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -60,13 +60,13 @@ const team = [
     bio: '',
     quote: 'If it isn\'t fun, it isn\'t going to teach anyone anything.',
     avatar: 'DG',
-    photo: '', // insert image URL here
+    photo: '', 
     color: 'from-teal-500 to-teal-700',
     accent: '#2dd4bf',
     favLang: 'C#',
     extra: { label: 'Currently Building', value: 'Flood Defense v2 with real hydrological data' },
-    email: '', // insert email here
-    phone: '', // insert phone here
+    email: '', 
+    phone: '', 
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -77,13 +77,13 @@ const team = [
     bio: '',
     quote: 'Design isn\'t decoration — it\'s communication.',
     avatar: 'AS',
-    photo: '', // insert image URL here
+    photo: '', 
     color: 'from-teal-600 to-ocean-600',
     accent: '#5eead4',
     favLang: 'CSS',
     extra: { label: 'Tools', value: 'Figma, Adobe Illustrator, After Effects' },
-    email: '', // insert email here
-    phone: '', // insert phone here
+    email: '', 
+    phone: '', 
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -94,13 +94,13 @@ const team = [
     bio: '',
     quote: 'Clarity of message is as important as clarity of water.',
     avatar: 'YA',
-    photo: '', // insert image URL here
+    photo: '', 
     color: 'from-teal-500 to-ocean-500',
     accent: '#0ea5e9',
     favLang: 'Markdown',
     extra: { label: 'Languages', value: 'Arabic, English, French' },
-    email: '', // insert email here
-    phone: '', // insert phone here
+    email: '', 
+    phone: '', 
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -111,13 +111,13 @@ const team = [
     bio: '',
     quote: 'Numbers tell the story — make sure it\'s one worth reading.',
     avatar: 'LA',
-    photo: '', // insert image URL here
+    photo: '', 
     color: 'from-ocean-500 to-teal-500',
     accent: '#14b8a6',
     favLang: 'Excel / VBA',
     extra: { label: 'Focus', value: 'Impact investing & nonprofit financial models' },
-    email: '', // insert email here
-    phone: '', // insert phone here
+    email: '', 
+    phone: '', 
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -128,13 +128,13 @@ const team = [
     bio: '',
     quote: 'Data is only as clean as the systems that hold it.',
     avatar: 'AI',
-    photo: '', // insert image URL here
+    photo: '', 
     color: 'from-ocean-600 to-teal-600',
     accent: '#38bdf8',
     favLang: 'Go',
     extra: { label: 'Specialty', value: 'Cybersecurity & distributed data systems' },
-    email: '', // insert email here
-    phone: '', // insert phone here
+    email: '', 
+    phone: '', 
     socials: { twitter: '#', github: '#', linkedin: '#' }
   }
 ]
@@ -200,33 +200,26 @@ function MemberModal({ member, onClose }) {
         }}
         onClick={e => e.stopPropagation()}
       >
-        {/* Top chromatic bar */}
         <div className="h-[3px]" style={{ background: `linear-gradient(90deg, ${member.accent}00 0%, ${member.accent} 35%, #14b8a6 65%, ${member.accent}00 100%)` }} />
 
-        {/* Ambient glows */}
         <div className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl opacity-[0.07] pointer-events-none" style={{ background: member.accent }} />
         <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-3xl opacity-[0.05] pointer-events-none" style={{ background: '#14b8a6' }} />
 
-        {/* Close */}
         <button onClick={onClose}
           className="absolute top-4 right-4 z-20 w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:bg-white/10"
           style={{ color: 'rgba(255,255,255,0.3)' }}>
           <X size={15} />
         </button>
 
-        {/* Two-column layout */}
         <div className="grid grid-cols-[188px_1fr]">
 
-          {/* ── LEFT PANEL ── */}
           <div className="flex flex-col items-center pt-8 px-5 pb-6 border-r" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-            {/* Avatar with glow ring */}
             <div className="relative mb-5">
               <Avatar member={member} size="xl" />
               <div className="absolute -inset-[3px] rounded-[18px] pointer-events-none"
                 style={{ boxShadow: `0 0 0 1.5px ${member.accent}55, 0 0 24px ${member.accent}30` }} />
             </div>
 
-            {/* Role badge */}
             <div className="inline-flex px-3 py-1 rounded-full text-[10px] font-black tracking-[0.15em] uppercase mb-2 text-center"
               style={{ background: `${member.accent}1a`, color: member.accent, border: `1px solid ${member.accent}40` }}>
               {member.role}
@@ -235,7 +228,6 @@ function MemberModal({ member, onClose }) {
             <h2 className="font-display font-bold text-white text-base text-center leading-snug mb-0.5">{member.name}</h2>
             <p className="text-white/30 text-[11px] text-center mb-5 leading-snug">{member.roleLabel}</p>
 
-            {/* Socials */}
             <div className="flex gap-2 mb-5">
               {[
                 { Icon: Twitter, href: member.socials.twitter },
@@ -250,7 +242,6 @@ function MemberModal({ member, onClose }) {
               ))}
             </div>
 
-            {/* Contact */}
             {(member.email || member.phone) && (
               <div className="w-full flex flex-col gap-2">
                 {member.email && (
@@ -277,23 +268,19 @@ function MemberModal({ member, onClose }) {
             )}
           </div>
 
-          {/* ── RIGHT PANEL ── */}
           <div className="flex flex-col gap-4 p-7 overflow-y-auto" style={{ maxHeight: '520px' }}>
 
-            {/* Quote block */}
             <div className="relative rounded-2xl px-5 pt-5 pb-4 overflow-hidden"
               style={{ background: `${member.accent}0a`, border: `1px solid ${member.accent}1f` }}>
               <Quote size={32} className="absolute -top-1 -left-1 opacity-[0.08]" style={{ color: member.accent }} />
               <p className="text-white/65 text-sm italic leading-relaxed">{member.quote}</p>
             </div>
 
-            {/* About */}
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.18em] mb-2" style={{ color: member.accent }}>About</p>
               <p className="text-white/50 text-sm leading-relaxed">{member.bio}</p>
             </div>
 
-            {/* Info tiles */}
             <div className="grid grid-cols-2 gap-3 mt-auto">
               <div className="rounded-2xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <div className="flex items-center gap-2 mb-2">
@@ -340,10 +327,8 @@ function MemberCard({ member, onClick }) {
         e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.25)'
       }}
     >
-      {/* Top accent bar */}
       <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, transparent, ${member.accent}90, transparent)` }} />
 
-      {/* Avatar section */}
       <div className="relative pt-8 pb-4 px-6 flex flex-col items-center text-center">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-52 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-15 transition-opacity pointer-events-none"
           style={{ background: member.accent }} />
@@ -362,7 +347,6 @@ function MemberCard({ member, onClick }) {
         <p className="text-white/40 text-xs leading-relaxed line-clamp-2 max-w-[210px] z-10">{member.jobDesc}</p>
       </div>
 
-      {/* Footer bar */}
       <div className="mx-4 mb-4 rounded-xl px-4 py-2.5 flex items-center justify-between"
         style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="flex items-center gap-1.5">
@@ -384,10 +368,8 @@ export default function MeetUs() {
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-x-hidden">
 
-      {/* Modal */}
       <MemberModal member={selected} onClose={() => setSelected(null)} />
 
-      {/* Hero */}
       <section className="relative max-w-5xl mx-auto px-6 text-center mb-24">
         <div className="absolute inset-0 -z-10 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-3xl opacity-10"
@@ -410,7 +392,6 @@ export default function MeetUs() {
         </p>
       </section>
 
-      {/* Values */}
       <section className="max-w-5xl mx-auto px-6 mb-20">
         <div className="grid md:grid-cols-3 gap-5">
           {values.map(({ icon: Icon, title, description, accent }) => (
@@ -429,7 +410,6 @@ export default function MeetUs() {
         </div>
       </section>
 
-      {/* Core Team */}
       <section className="max-w-5xl mx-auto px-6 mb-20">
         <div className="flex items-center gap-4 mb-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
@@ -437,14 +417,12 @@ export default function MeetUs() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
         </div>
 
-        {/* First 6 — 3 per row */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-5">
           {team.slice(0, 6).map((member) => (
             <MemberCard key={member.name} member={member} onClick={setSelected} />
           ))}
         </div>
 
-        {/* Last 2 — centered */}
         <div className="flex justify-center gap-5">
           {team.slice(6).map((member) => (
             <div key={member.name} className="w-full max-w-[calc(33.333%-10px)]">
@@ -454,7 +432,6 @@ export default function MeetUs() {
         </div>
       </section>
 
-      {/* Supervisor */}
       <section className="max-w-xs mx-auto px-6">
         <div className="flex items-center gap-4 mb-8">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-violet-500/20" />
