@@ -298,7 +298,7 @@ function MemberModal({ member, onClose }) {
               <div className="rounded-2xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <div className="flex items-center gap-2 mb-2">
                   <Code2 size={12} style={{ color: member.accent }} />
-                  <span className="text-white/25 text-[10px] uppercase tracking-widest">Fav Language</span>
+                  <span className="text-white/25 text-[10px] uppercase tracking-widest">Fav Languages</span>
                 </div>
                 <p className="text-white font-bold text-sm">{member.favLang}</p>
               </div>
