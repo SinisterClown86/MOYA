@@ -37,7 +37,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 text-base">
           <Link to="/" className={`nav-link ${isActive('/') ? 'text-white' : ''}`}>Home</Link>
           <Link to="/meet-us" className={`nav-link ${isActive('/meet-us') ? 'text-white' : ''}`}>Meet Us</Link>
           <Link to="/map" className={`nav-link flex items-center gap-1.5 ${isActive('/map') ? 'text-white' : ''}`}>
