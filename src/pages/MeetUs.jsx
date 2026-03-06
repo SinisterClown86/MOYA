@@ -9,14 +9,14 @@ const team = [
     bio: 'Leads company vision, strategy, partnerships, investor relations, and overall business development. Passionate about turning environmental challenges into scalable tech solutions.',
     quote: 'The more you understand this world, the more you destroy yourself. That\'s why fools are happy, and intelligent peoepl live in loneliness',
     avatar: 'TQ',
-    photo: '', // insert image URL here
+    photo: 'https://i.ibb.co/h1Bv3YNM/tareqkhalil.jpg',
     color: 'from-ocean-500 to-ocean-700',
     accent: '#0ea5e9',
-    favLang: 'Japa',
+    favLang: 'Javascript, Python, Typescript, Markdown',
     extra: { label: 'Fun Fact', value: 'Has visited 5 different Nile delta regions for field research.' },
-    email: '', // insert email here
-    phone: '', // insert phone here
-    socials: { twitter: '#', github: '#', linkedin: '#' }
+    email: 'tareqkhalil1415@gmail.com',
+    phone: '+201012439278',
+    socials: { twitter: 'https://x.com/Tareq_Khalil281', github: 'https://github.com/Tareq-Khalil', linkedin: 'https://www.linkedin.com/in/tareq-abdellatif-9b34502b4/' }
   },
   {
     name: 'Mohamed El-Shamy',
