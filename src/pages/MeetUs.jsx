@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Github, Twitter, Linkedin, Droplets, Target, Eye, Heart, X, Code2, Quote, Sparkles, ChevronRight, Users } from 'lucide-react'
+import { Github, Twitter, Linkedin, Droplets, Target, Eye, Heart, X, Code2, Quote, Sparkles, ChevronRight, Users, Mail, Phone } from 'lucide-react'
 
 const team = [
   {
@@ -14,6 +14,8 @@ const team = [
     accent: '#0ea5e9',
     favLang: 'Python',
     extra: { label: 'Fun Fact', value: 'Has visited 5 different Nile delta regions for field research.' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -28,6 +30,8 @@ const team = [
     accent: '#14b8a6',
     favLang: 'TypeScript',
     extra: { label: 'Stack', value: 'React, Supabase, Node.js, PostGIS' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -42,6 +46,8 @@ const team = [
     accent: '#38bdf8',
     favLang: 'JavaScript',
     extra: { label: 'Specialty', value: 'Growth marketing & environmental storytelling' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -56,6 +62,8 @@ const team = [
     accent: '#2dd4bf',
     favLang: 'C#',
     extra: { label: 'Currently Building', value: 'Flood Defense v2 with real hydrological data' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -70,6 +78,8 @@ const team = [
     accent: '#5eead4',
     favLang: 'CSS',
     extra: { label: 'Tools', value: 'Figma, Adobe Illustrator, After Effects' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -84,6 +94,8 @@ const team = [
     accent: '#0ea5e9',
     favLang: 'Markdown',
     extra: { label: 'Languages', value: 'Arabic, English, French' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -98,6 +110,8 @@ const team = [
     accent: '#14b8a6',
     favLang: 'Excel / VBA',
     extra: { label: 'Focus', value: 'Impact investing & nonprofit financial models' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   },
   {
@@ -112,6 +126,8 @@ const team = [
     accent: '#38bdf8',
     favLang: 'Go',
     extra: { label: 'Specialty', value: 'Cybersecurity & distributed data systems' },
+    email: '', // insert email here
+    phone: '', // insert phone here
     socials: { twitter: '#', github: '#', linkedin: '#' }
   }
 ]
@@ -128,6 +144,8 @@ const supervisor = {
   accent: '#a78bfa',
   favLang: 'R / MATLAB',
   extra: { label: 'Expertise', value: 'Environmental policy, hydrology, water governance' },
+  email: '', // insert email here
+  phone: '', // insert phone here
   socials: { twitter: '#', github: '#', linkedin: '#' }
 }
 
@@ -233,6 +251,34 @@ function MemberModal({ member, onClose }) {
           <div className="mb-5">
             <p className="text-white/60 text-sm leading-relaxed">{member.bio}</p>
           </div>
+
+          {/* Contact */}
+          {(member.email || member.phone) && (
+            <div className="flex flex-col gap-2 mb-5">
+              {member.email && (
+                <a href={`mailto:${member.email}`}
+                  className="flex items-center gap-3 rounded-xl px-4 py-2.5 transition-all hover:bg-white/8 group"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${member.accent}18`, border: `1px solid ${member.accent}30` }}>
+                    <Mail size={13} style={{ color: member.accent }} />
+                  </div>
+                  <span className="text-white/60 text-sm group-hover:text-white/80 transition-colors truncate">{member.email}</span>
+                </a>
+              )}
+              {member.phone && (
+                <a href={`tel:${member.phone}`}
+                  className="flex items-center gap-3 rounded-xl px-4 py-2.5 transition-all hover:bg-white/8 group"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${member.accent}18`, border: `1px solid ${member.accent}30` }}>
+                    <Phone size={13} style={{ color: member.accent }} />
+                  </div>
+                  <span className="text-white/60 text-sm group-hover:text-white/80 transition-colors">{member.phone}</span>
+                </a>
+              )}
+            </div>
+          )}
 
           {/* Bottom row: fav lang + extra */}
           <div className="grid grid-cols-2 gap-3">
