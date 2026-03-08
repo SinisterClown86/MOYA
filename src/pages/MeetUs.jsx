@@ -60,7 +60,7 @@ const team = [
     bio: 'Artist by day, programmer by night, otaku by heart.',
     quote: 'A life that lives without doing anything is the same as a slow death.',
     avatar: 'DG',
-    photo: 'https://i.ibb.co/gFcPJsCr/Daniel-George.jpg', 
+    photo: 'https://i.ibb.co/DDHN5GjS/Daniel-George.png', 
     color: 'from-teal-500 to-teal-700',
     accent: '#2dd4bf',
     favLang: 'Python, GDscript, & Assembly',
