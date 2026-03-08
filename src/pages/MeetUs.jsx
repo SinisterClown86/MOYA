@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Github, Twitter, Linkedin, Droplets, Target, Eye, Heart, X, Code2, Quote, Sparkles, ChevronRight, Users, Mail, Phone } from 'lucide-react'
+import { Github, Twitter, Youtube, Linkedin, Droplets, Target, Eye, Heart, X, Code2, Quote, Sparkles, ChevronRight, Users, Mail, Phone } from 'lucide-react'
 
 const team = [
   {
@@ -41,33 +41,33 @@ const team = [
     roleLabel: 'Chief Marketing Officer',
     jobDesc: 'Manages branding, digital campaigns, content strategy, partnerships, and user acquisition.',
     bio:'',
-    quote: 'Every campaign should leave people more informed than before.',
+    quote: '',
     avatar: 'KM',
-    photo: '', 
+    photo: 'https://i.ibb.co/FLXk4b4M/Kevin-Martin.jpg', 
     color: 'from-ocean-600 to-teal-600',
     accent: '#38bdf8',
-    favLang: 'JavaScript',
-    extra: { label: 'Specialty', value: 'Growth marketing & environmental storytelling' },
-    email: '', 
-    phone: '', 
-    socials: { twitter: '#', github: '#', linkedin: '#' }
+    favLang: 'HTML, CSS',
+    extra: { label: '', value: '' },
+    email: 'Kevinmartinmicheal@gmail.com', 
+    phone: '+201129835557', 
+    socials: { twitter: '#', github: '#', linkedin: 'https://www.linkedin.com/in/kevin-martin-995b7b32a?utm_source=share_via&utm_content=profile&utm_medium=member_android' }
   },
   {
     name: 'Daniel George',
     role: 'Game Developer',
     roleLabel: 'Game Developer',
     jobDesc: 'Designs educational gameplay mechanics, user engagement flows, and gamification strategy.',
-    bio: '',
-    quote: 'If it isn\'t fun, it isn\'t going to teach anyone anything.',
+    bio: 'Artist by day, programmer by night, otaku by heart.',
+    quote: 'A life that lives without doing anything is the same as a slow death.',
     avatar: 'DG',
-    photo: '', 
+    photo: 'https://i.ibb.co/gFcPJsCr/Daniel-George.jpg', 
     color: 'from-teal-500 to-teal-700',
     accent: '#2dd4bf',
-    favLang: 'C#',
-    extra: { label: 'Currently Building', value: 'Flood Defense v2 with real hydrological data' },
-    email: '', 
-    phone: '', 
-    socials: { twitter: '#', github: '#', linkedin: '#' }
+    favLang: 'Python, GDscript, & Assembly',
+    extra: { label: '', value: '' },
+    email: 'danielgeorgewadea@gmail.com', 
+    phone: '+201227298840', 
+    socials: { Youtube: 'https://www.youtube.com/@Daniel-Geo123', github: ' https://github.com/daniel-geo', linkedin: '#' }
   },
   {
     name: 'Asser El-Sergany',
