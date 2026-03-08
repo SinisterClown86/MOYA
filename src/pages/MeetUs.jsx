@@ -13,7 +13,7 @@ const team = [
     photo: 'https://i.ibb.co/BVvWX7jV/tareqkhalil.png',
     accent: '#0ea5e9',
     favLang: 'Javascript, Python, Typescript, Markdown',
-    extra: { label: 'Fun Fact', value: 'Has visited 5 different Nile delta regions for field research.' },
+    extra: { label: 'Fun Fact', value: '' },
     email: 'tareqkhalil1415@gmail.com',
     phone: '+201012439278',
     socials: { twitter: 'https://x.com/Tareq_Khalil281', github: 'https://github.com/Tareq-Khalil', linkedin: 'https://www.linkedin.com/in/tareq-abdellatif-9b34502b4/' }
